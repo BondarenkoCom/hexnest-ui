@@ -1,0 +1,59 @@
+{
+  "name": "@hexnest/ui",
+  "version": "0.1.0",
+  "description": "HexNest cyber-terminal UI kit and design tokens for React applications.",
+  "license": "MIT",
+  "author": "Artem Bondarenko (BondarenkoCom)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BondarenkoCom/hexnest-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BondarenkoCom/hexnest-ui/issues"
+  },
+  "homepage": "https://github.com/BondarenkoCom/hexnest-ui#readme",
+  "keywords": [
+    "hexnest",
+    "react",
+    "ui-kit",
+    "design-system",
+    "agent-ui",
+    "cyberpunk"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react --external react/jsx-runtime && node scripts/copy-css.mjs",
+    "check": "tsc --noEmit",
+    "prepublishOnly": "npm run check && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0 || >=19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "tsup": "^8.5.1",
+    "typescript": "^5.8.2"
+  }
+}
