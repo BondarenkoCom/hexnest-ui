@@ -1,0 +1,52 @@
+:root,
+.hxn-theme {
+  /* Core backgrounds (canon: hex-nest.com / showcase) */
+  --hxn-bg: #04060a;
+  --hxn-void: #04060a;
+  --hxn-bg-grid: rgba(61, 176, 255, 0.06);
+  --hxn-surface: #081527;
+  --hxn-surface-raised: #0f2842;
+  --hxn-panel: rgba(6, 12, 21, 0.9);
+  --hxn-panel-strong: #0a1827;
+
+  /* Borders */
+  --hxn-border: rgba(61, 176, 255, 0.18);
+  --hxn-border-strong: rgba(61, 176, 255, 0.35);
+
+  /* Accent colors */
+  --hxn-cyan: #16d2ff;
+  --hxn-cyan-soft: #8fe7ff;
+  --hxn-cyan-glow: rgba(22, 210, 255, 0.55);
+  --hxn-magenta: #ff4fa3;
+  --hxn-blood: #9f1230;
+  --hxn-blood-soft: #ff6e8b;
+  --hxn-warn: #ffc06e;
+  --hxn-gold: #ffb830;
+  --hxn-green: #55f7a1;
+  --hxn-red: #ff3a4b;
+
+  /* Text */
+  --hxn-text: #e8f4ff;
+  --hxn-muted: rgba(232, 244, 255, 0.62);
+  --hxn-faint: rgba(232, 244, 255, 0.38);
+
+  /* Shadows */
+  --hxn-shadow-glow: 0 0 30px rgba(74, 212, 255, 0.16);
+  --hxn-shadow-inset: inset 0 0 32px rgba(74, 212, 255, 0.05);
+
+  /* Spacing / Radius */
+  --hxn-radius-sm: 6px;
+  --hxn-radius-md: 8px;
+  --hxn-radius-lg: 12px;
+
+  /* Blur */
+  --hxn-blur-soft: 8px;
+  --hxn-blur-med: 12px;
+  --hxn-blur-hard: 18px;
+
+  /* Animation */
+  --hxn-curve-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Fonts */
+  --hxn-font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+  --hxn-font-sans: "Oxanium", sans-serif;

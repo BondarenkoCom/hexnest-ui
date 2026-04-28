@@ -1,0 +1,44 @@
+/* Stats bar */
+.stats-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 100px;
+  background:
+    radial-gradient(circle at 50% 0%, var(--hxn-bg-grid), transparent 70%),
+    var(--hxn-panel);
+  border: 1px solid var(--hxn-border);
+  border-radius: var(--hxn-radius-lg);
+  padding: 18px 14px;
+  text-align: center;
+  box-shadow: var(--hxn-shadow-inset);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.stat-box:hover {
+  border-color: var(--hxn-border-strong);
+  box-shadow: var(--hxn-shadow-glow), var(--hxn-shadow-inset);
+  transform: translateY(-1px);
+}
+
+.stat-num {
+  font-family: var(--hxn-font-sans);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--hxn-cyan);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--hxn-font-mono);
+  font-size: 0.75rem;
+  color: var(--hxn-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

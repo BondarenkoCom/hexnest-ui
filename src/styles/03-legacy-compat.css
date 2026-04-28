@@ -1,0 +1,401 @@
+/* ============================================================================
+ * LEGACY COMPAT LAYER
+ * Unprefixed class names and CSS variables consumed by app code that predates
+ * the `hxn-*` namespace. Imported automatically with `@hexnest/ui/styles.css`.
+ * Source: hexnest-mvp-showcase/frontend/src/design-system/{tokens,typography,base,glass,scanlines}.css
+ * ============================================================================ */
+
+/* Typography (formerly design-system/typography.css) */
+html,
+body {
+  font-family: "Oxanium", sans-serif;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+p { color: var(--text-dim); }
+
+.mono { font-family: var(--font-mono); }
+
+:root {
+  /* Legacy aliases (mirror --hxn-* values) */
+  --bg-void: #05070d;
+  --bg-panel: rgba(10, 20, 35, 0.6);
+  --bg-panel-deep: rgba(6, 12, 22, 0.78);
+  --border-glass: rgba(74, 212, 255, 0.15);
+  --border-glass-hot: rgba(74, 212, 255, 0.45);
+  --accent-cyan: #4ad4ff;
+  --accent-cyan-glow: rgba(74, 212, 255, 0.55);
+  --warn-red: #ff3a4b;
+  --status-amber: #ffb830;
+  --text-primary: #e8f4ff;
+  --text-dim: rgba(232, 244, 255, 0.62);
+  --text-mute: rgba(232, 244, 255, 0.38);
+  --blur-soft: 8px;
+  --blur-med: 12px;
+  --blur-hard: 18px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --curve-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", "Menlo", monospace;
+
+  /* Short aliases used by older HexNest portal stylesheets */
+  --void: var(--bg-void);
+  --panel: var(--bg-panel-deep);
+  --line: var(--border-glass-hot);
+  --line-soft: var(--border-glass);
+  --text: var(--text-primary);
+  --muted: var(--text-dim);
+  --cyan: var(--accent-cyan);
+  --cyan-soft: #99ebff;
+  --blood: #8d1524;
+  --blood-soft: #ff7281;
+  --warn: var(--status-amber);
+  --deep: #07121f;
+  --deep-2: #0a1827;
+}
+
+/* Body background grid (formerly design-system/base.css) */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg-void);
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 16% 14%, rgba(74, 212, 255, 0.09), transparent 36%),
+    radial-gradient(circle at 88% 5%, rgba(74, 212, 255, 0.06), transparent 38%),
+    linear-gradient(180deg, rgba(5, 7, 13, 1), rgba(2, 5, 10, 1));
+}
+
+#root { position: relative; z-index: 1; }
+
+a { color: var(--text-primary); }
+
+button, input, textarea, select { font: inherit; color: inherit; }
+
+#hexnest-particle-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* Press-feel micro-interaction */
+.press-feel {
+  transition: transform 0.12s var(--curve-snap), box-shadow 0.2s var(--curve-snap);
+}
+
+.press-feel:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 18px var(--accent-cyan-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* HoloButton (emitted by `<HoloButton>` in @hexnest/ui) */
+.holo-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-panel-deep);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.holo-button:disabled { cursor: not-allowed; opacity: 0.5; }
+
+.holo-button-primary {
+  border-color: var(--border-glass-hot);
+  box-shadow: inset 0 0 0 1px rgba(74, 212, 255, 0.2);
+}
+
+.holo-button-ghost { background: transparent; }
+
+.holo-button-danger {
+  border-color: rgba(255, 58, 75, 0.55);
+  color: #ffd8dc;
+  box-shadow: inset 0 0 0 1px rgba(255, 58, 75, 0.16);
+}
+
+.holo-button-label { position: relative; z-index: 1; }
+
+.holo-button-scan {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(232, 244, 255, 0.1) 45%,
+    rgba(232, 244, 255, 0.34) 50%,
+    rgba(232, 244, 255, 0.08) 56%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.holo-button:active .holo-button-scan {
+  animation: holo-button-sweep 320ms var(--curve-snap) both;
+}
+
+@keyframes holo-button-sweep {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(120%); }
+}
+
+/* Glass panels (raw class usage in app JSX) */
+.glass-panel {
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(145deg, rgba(74, 212, 255, 0.08), transparent 35%),
+    var(--bg-panel);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -16px 28px rgba(0, 0, 0, 0.32),
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 28px rgba(74, 212, 255, 0.08);
+  backdrop-filter: blur(var(--blur-med));
+  -webkit-backdrop-filter: blur(var(--blur-med));
+}
+
+.glass-panel-deep {
+  background:
+    linear-gradient(145deg, rgba(74, 212, 255, 0.1), transparent 34%),
+    var(--bg-panel-deep);
+}
+
+.glass-panel-hot {
+  border-color: var(--border-glass-hot);
+  box-shadow:
+    inset 0 0 0 1px rgba(74, 212, 255, 0.2),
+    0 0 26px rgba(74, 212, 255, 0.2);
+}
+
+.glass-border-hot { border-color: var(--border-glass-hot); }
+
+/* CRT scanlines (raw class usage) */
+@keyframes ds-scanline-drift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(4px); }
+}
+
+.surface-crt { position: relative; overflow: hidden; }
+
+.surface-crt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(232, 244, 255, 0.08) 0,
+    rgba(232, 244, 255, 0.08) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 1;
+  animation: ds-scanline-drift 10s linear infinite;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(232, 244, 255, 0.08) 0,
+    rgba(232, 244, 255, 0.08) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.scanlines-soft   { opacity: 0.20; }
+.scanlines-medium { opacity: 0.32; }
+.scanlines-hard   { opacity: 0.45; }
+
+/* StatusDot (also emitted as raw .status-dot* by older code paths) */
+@keyframes status-dot-pulse {
+  0%, 100% { opacity: 0.82; box-shadow: 0 0 0 0 transparent; }
+  50%      { opacity: 1;    box-shadow: 0 0 12px currentColor; }
+}
+
+.status-dot {
+  display: inline-block;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  animation: status-dot-pulse 1.8s ease-in-out infinite;
+}
+
+.status-dot-sm { width: 8px;  height: 8px; }
+.status-dot-md { width: 10px; height: 10px; }
+
+.status-dot-online { color: var(--accent-cyan);  background: rgba(74, 212, 255, 0.55); }
+.status-dot-amber  { color: var(--status-amber); background: rgba(255, 184, 48, 0.52); }
+.status-dot-red    { color: var(--warn-red);     background: rgba(255, 58, 75, 0.55); }
+.status-dot-idle   { color: var(--text-mute);    background: rgba(232, 244, 255, 0.24); }
+
+/* LiveCounter (raw class) */
+.live-counter {
+  display: inline-flex;
+  min-width: 24px;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 212, 255, 0.35);
+  background: rgba(74, 212, 255, 0.12);
+  color: var(--accent-cyan);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.live-counter.is-pulse { animation: live-counter-pulse 340ms var(--curve-snap); }
+
+@keyframes live-counter-pulse {
+  from { transform: scale(0.8); opacity: 0.65; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* TerminalFrame (raw class) */
+.terminal-frame { width: 100%; }
+
+.terminal-frame-bezel {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(11, 18, 28, 0.9), rgba(5, 10, 18, 0.96)),
+    rgba(0, 0, 0, 0.8);
+  padding: 16px;
+  box-shadow:
+    inset 0 0 0 1px rgba(74, 212, 255, 0.08),
+    0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-screw {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 244, 255, 0.28);
+  background: radial-gradient(circle at 30% 30%, rgba(232, 244, 255, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+.terminal-screw-tl { top: 8px;    left: 8px; }
+.terminal-screw-tr { top: 8px;    right: 8px; }
+.terminal-screw-bl { bottom: 8px; left: 8px; }
+.terminal-screw-br { bottom: 8px; right: 8px; }
+
+.terminal-frame-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.terminal-frame-title,
+.terminal-frame-subtitle {
+  margin: 0;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-dim);
+}
+
+.terminal-frame-subtitle {
+  margin-top: 3px;
+  color: var(--accent-cyan);
+}
+
+.terminal-frame-leds {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.terminal-led-unit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.terminal-led-rec .status-dot-red { animation-duration: 0.9s; }
+
+.terminal-frame-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.terminal-frame-body.has-left-inset {
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+}
+
+.terminal-frame-inset,
+.terminal-frame-screen {
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 12% 14%, rgba(74, 212, 255, 0.08), transparent 44%),
+    var(--bg-panel-deep);
+  min-height: 220px;
+}
+
+.terminal-frame-inset {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.terminal-frame-screen { padding: 14px; }
+
+@media (max-width: 767px) {
+  .terminal-frame-body.has-left-inset { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 479px) {
+  .terminal-screw { display: none; }
+}
