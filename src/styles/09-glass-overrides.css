@@ -1,0 +1,438 @@
+/*
+ * Glass override layer — canonical cyberpunk-glass styling for shared classes.
+ * Supersedes the legacy base definitions in 02-05.
+ * Used by: hexnest-mvp-showcase, hexnest-node.
+ */
+
+/* Panel ---------------------------------------------------------------- */
+
+.panel {
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(150deg, rgba(74, 212, 255, 0.08), rgba(74, 212, 255, 0) 38%),
+    var(--bg-panel);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -14px 30px rgba(0, 0, 0, 0.36),
+    0 18px 40px rgba(0, 0, 0, 0.44),
+    0 0 24px rgba(74, 212, 255, 0.08);
+  backdrop-filter: blur(var(--blur-med));
+  -webkit-backdrop-filter: blur(var(--blur-med));
+}
+
+/* Buttons -------------------------------------------------------------- */
+
+.button-link,
+a.button-link,
+button.button-link {
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent-cyan);
+  background:
+    linear-gradient(180deg, rgba(74, 212, 255, 0.9), rgba(74, 212, 255, 0.7));
+  color: #041016;
+  font-weight: 600;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 18px rgba(74, 212, 255, 0.35);
+  transition: transform 0.15s var(--curve-snap), box-shadow 0.2s var(--curve-snap);
+  cursor: pointer;
+}
+
+.button-link:hover,
+a.button-link:hover,
+button.button-link:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 28px rgba(74, 212, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.button-link:active {
+  transform: scale(0.98);
+}
+
+.button-ghost,
+a.button-ghost,
+button.button-ghost,
+.button-link.button-ghost {
+  background: rgba(4, 11, 18, 0.72);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(74, 212, 255, 0.4);
+  box-shadow:
+    inset 0 0 0 1px rgba(74, 212, 255, 0.08),
+    0 0 16px rgba(74, 212, 255, 0.1);
+}
+
+.button-ghost:hover,
+a.button-ghost:hover {
+  border-color: var(--border-glass-hot);
+  box-shadow: 0 0 22px rgba(74, 212, 255, 0.28);
+}
+
+.btn-secondary {
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(74, 212, 255, 0.3);
+  background: rgba(4, 11, 18, 0.72);
+  color: var(--text-dim);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(74, 212, 255, 0.6);
+  color: var(--text-primary);
+}
+
+/* Chips ---------------------------------------------------------------- */
+
+.chip {
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.64rem;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 212, 255, 0.28);
+  background: rgba(6, 13, 22, 0.78);
+  color: var(--text-dim);
+}
+
+.chip-ok {
+  border-color: rgba(74, 212, 255, 0.5);
+  color: var(--accent-cyan);
+}
+
+.chip-warn {
+  border-color: rgba(255, 184, 48, 0.5);
+  color: var(--status-amber);
+}
+
+.chip-alert {
+  border-color: rgba(255, 58, 75, 0.5);
+  color: var(--warn-red);
+  background: rgba(30, 8, 12, 0.65);
+}
+
+.chip-sm {
+  font-size: 0.58rem;
+  padding: 3px 7px;
+}
+
+/* Forms ---------------------------------------------------------------- */
+
+.form-input,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  background: rgba(2, 7, 13, 0.82);
+  border: 1px solid rgba(74, 212, 255, 0.24);
+  border-radius: var(--radius-sm);
+  padding: 9px 11px;
+  min-height: 40px;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s var(--curve-snap), box-shadow 0.2s var(--curve-snap);
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%237fe7ff' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>"),
+    linear-gradient(180deg, rgba(5, 12, 20, 0.96), rgba(3, 8, 13, 0.98));
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 14px center, 0 0;
+  background-size: 12px 8px, auto;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.form-input:focus {
+  outline: none;
+  border-color: var(--border-glass-hot);
+  box-shadow:
+    0 0 0 1px rgba(74, 212, 255, 0.24),
+    0 0 18px rgba(74, 212, 255, 0.2);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-mute);
+  letter-spacing: 0.05em;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  min-height: unset;
+  border: 1px solid rgba(22, 210, 255, 0.45);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(5, 12, 20, 0.96), rgba(3, 8, 13, 0.98));
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
+}
+
+input[type="checkbox"]:hover {
+  border-color: rgba(22, 210, 255, 0.7);
+}
+
+input[type="checkbox"]:checked {
+  background: rgba(22, 210, 255, 0.18);
+  border-color: rgba(22, 210, 255, 0.85);
+  box-shadow: 0 0 6px rgba(22, 210, 255, 0.25);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--cyan-soft, #7fe7ff);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(22, 210, 255, 0.3);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+  -webkit-box-shadow: 0 0 0 1000px rgba(3, 8, 13, 0.98) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.form-label,
+label {
+  display: block;
+  margin: 14px 0 6px;
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Cards ---------------------------------------------------------------- */
+
+.agent-dir-card,
+.node-card,
+.feature-card {
+  font-family: var(--font-mono);
+  border: 1px solid rgba(74, 212, 255, 0.2);
+  background:
+    linear-gradient(150deg, rgba(74, 212, 255, 0.06), transparent 38%),
+    rgba(5, 12, 20, 0.78);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.agent-dir-card:hover {
+  border-color: rgba(74, 212, 255, 0.48);
+  box-shadow: 0 0 22px rgba(74, 212, 255, 0.2);
+}
+
+.agent-dir-head strong {
+  color: var(--accent-cyan);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agent-field-label {
+  color: var(--text-mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+
+/* Modal / drawer ------------------------------------------------------- */
+
+.modal-overlay {
+  background: rgba(1, 4, 8, 0.62);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modal-panel {
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(150deg, rgba(74, 212, 255, 0.08), transparent 36%),
+    var(--bg-panel-deep);
+  backdrop-filter: blur(var(--blur-hard));
+  -webkit-backdrop-filter: blur(var(--blur-hard));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 32px rgba(74, 212, 255, 0.14);
+}
+
+.modal-header h2 {
+  color: var(--accent-cyan);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+}
+
+.btn-modal-close {
+  font-family: var(--font-mono);
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(74, 212, 255, 0.34);
+  background: rgba(4, 11, 18, 0.78);
+  color: var(--accent-cyan);
+}
+
+/* Auth modal backdrop -------------------------------------------------- */
+
+.auth-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(2, 6, 12, 0.85);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  animation: auth-modal-in 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.auth-modal-backdrop .auth-page {
+  min-height: auto;
+  padding: 24px;
+}
+
+@keyframes auth-modal-in {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+/* Connect brief (Room page / Agent brief) ------------------------------ */
+
+.connect-note {
+  margin: 0 0 10px;
+  color: var(--text-mute);
+  font-size: 0.86rem;
+}
+
+.connect-pre {
+  margin: 0;
+  border: 1px solid rgba(74, 212, 255, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  background: rgba(5, 11, 18, 0.92);
+  color: #bde6ff;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Typography helpers --------------------------------------------------- */
+
+.eyebrow {
+  color: var(--accent-cyan);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+
+.meta {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  font-size: 0.74rem;
+}
+
+/* Aya terminal dock (auth pages) --------------------------------------- */
+
+.aya-terminal-dock {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 0 10px 10px;
+}
+
+.aya-terminal-dock .crt-display {
+  width: 100%;
+}
+
+.aya-terminal-line {
+  min-height: 70px;
+  display: grid;
+  place-items: center;
+  padding: 8px 12px;
+}
+
+/* Responsive ----------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .aya-terminal-line {
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 767px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions .button-link,
+  .actions .button-ghost,
+  .actions button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal-panel {
+    width: min(96vw, 460px);
+  }
+}

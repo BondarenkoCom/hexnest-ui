@@ -42,6 +42,7 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --external react --external react/jsx-runtime && node scripts/copy-css.mjs",
+    "watch": "concurrently -n ts,css -c cyan,yellow \"tsup src/index.ts --format esm,cjs --dts --external react --external react/jsx-runtime --watch\" \"node scripts/watch-css.mjs\"",
     "check": "tsc --noEmit",
     "prepare": "npm run build",
     "prepublishOnly": "npm run check && npm run build"
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
+    "concurrently": "^9.2.1",
     "tsup": "^8.5.1",
     "typescript": "^5.8.2"
   }
