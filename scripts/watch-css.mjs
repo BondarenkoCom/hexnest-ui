@@ -12,7 +12,7 @@ const stylesDir = resolve(__dirname, "../src/styles");
 const copyScript = resolve(__dirname, "copy-css.mjs");
 
 function runCopy() {
-  const child = fork(copyScript, [], { stdio: "inherit" });
+  const child = fork(copyScript, [], { stdio: "inherit", cwd: __dirname + "/.." });
   child.on("exit", (code) => {
     if (code !== 0) console.error("[watch-css] copy-css.mjs exited with code", code);
   });
