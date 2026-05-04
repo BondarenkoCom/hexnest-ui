@@ -17,7 +17,7 @@ export function AyaLoader({
 
   return (
     <div className={classes} role="status" aria-live="polite" aria-busy="true">
-      <img src="/assets/aya/love_shy.png" alt="Aya loading" className="loader-aya" />
+      <img src="/assets/aya/love_shy.webp" alt="Aya loading" width="120" height="180" className="loader-aya" />
       <div className="loader-text">
         <p className="loader-title">{title}</p>
         <div className="loader-bar"><div className="loader-bar-fill" /></div>

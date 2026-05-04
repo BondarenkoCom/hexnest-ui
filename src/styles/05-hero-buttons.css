@@ -35,6 +35,7 @@
 
 .aya-node img {
   width: 116px;
+  height: auto;
   transform: translateY(8px);
   image-rendering: pixelated;
 }

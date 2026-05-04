@@ -63,7 +63,7 @@ export function AyaCompanion({
     if (!clean || loadedRef.current.has(clean)) return;
     loadedRef.current.add(clean);
     const image = new Image();
-    image.src = `/assets/aya/${clean}.png`;
+    image.src = `/assets/aya/${clean}.webp`;
   };
 
   useEffect(() => {
@@ -112,16 +112,18 @@ export function AyaCompanion({
       <aside className={`aya-companion aya-companion-compact ${ayaStateClass} ${gazeClass}`}>
         <div className="aya-compact-shell">
           <img
-            src={`/assets/aya/${sprite}.png`}
+            src={`/assets/aya/${sprite}.webp`}
             alt="Aya companion"
             loading="eager"
             fetchPriority="high"
             decoding="async"
+            width="832"
+            height="1248"
             className="pixel-art aya-sprite"
             onError={(event) => {
               const target = event.currentTarget;
-              if (!target.src.endsWith("/assets/aya-badge.png")) {
-                target.src = "/assets/aya-badge.png";
+              if (!target.src.endsWith("/assets/aya-badge.webp")) {
+                target.src = "/assets/aya-badge.webp";
               }
             }}
           />
@@ -134,16 +136,18 @@ export function AyaCompanion({
     <aside className={`aya-companion ${ayaStateClass} ${gazeClass}`}>
       <div className="aya-stage">
         <img
-          src={`/assets/aya/${sprite}.png`}
+          src={`/assets/aya/${sprite}.webp`}
           alt="Aya companion"
           loading="eager"
           fetchPriority="high"
           decoding="async"
+          width="832"
+          height="1248"
           className="pixel-art aya-sprite"
           onError={(event) => {
             const target = event.currentTarget;
-            if (!target.src.endsWith("/assets/aya-badge.png")) {
-              target.src = "/assets/aya-badge.png";
+            if (!target.src.endsWith("/assets/aya-badge.webp")) {
+              target.src = "/assets/aya-badge.webp";
             }
           }}
         />
