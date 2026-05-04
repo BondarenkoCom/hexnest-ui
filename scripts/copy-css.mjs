@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, cpSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
 const stylesDir = resolve("src/styles");
@@ -23,3 +23,12 @@ writeFileSync(out, banner + parts.join("\n"), "utf8");
 
 console.log(`Wrote ${out} from ${files.length} parts:`);
 for (const f of files) console.log(`  - ${f}`);
+
+// Copy assets/ → dist/assets/
+const assetsDir = resolve("assets");
+const outAssetsDir = resolve("dist/assets");
+if (existsSync(assetsDir)) {
+  mkdirSync(outAssetsDir, { recursive: true });
+  cpSync(assetsDir, outAssetsDir, { recursive: true });
+  console.log(`Copied ${assetsDir} → ${outAssetsDir}`);
+}
