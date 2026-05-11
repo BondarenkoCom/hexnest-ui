@@ -10,7 +10,7 @@ export type { AyaState } from "./hooks/useAyaState";
 export { AuthModal } from "./components/AuthModal";
 export type { AuthModalProps } from "./components/AuthModal";
 export { AyaCompanion } from "./components/AyaCompanion";
-export type { AyaCompanionProps, AyaGazeTarget } from "./components/AyaCompanion";
+export type { AyaCompanionProps, AyaGazeTarget, AyaMode } from "./components/AyaCompanion";
 export { AyaLoader } from "./components/AyaLoader";
 export type { AyaLoaderProps } from "./components/AyaLoader";
 export { Button } from "./components/Button";

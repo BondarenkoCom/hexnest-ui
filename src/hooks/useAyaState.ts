@@ -99,7 +99,7 @@ export function useAyaState(mode: AyaMode) {
     }
   }
 
-  function onFocus(field: "name" | "email" | "password" | "confirm"): void {
+  function onFocus(field: "name" | "email" | "password" | "confirm" | "nodeName"): void {
     if (mode === "signin") {
       if (field === "email") {
         transition("validating", "Identity check online.");
@@ -110,6 +110,11 @@ export function useAyaState(mode: AyaMode) {
         return;
       }
       transition("curious", "Sign in to your swarm.");
+      return;
+    }
+
+    if (field === "nodeName") {
+      transition("curious", "How shall we call this node?");
       return;
     }
 
