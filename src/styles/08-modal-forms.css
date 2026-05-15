@@ -1,7 +1,8 @@
 /* Modal system + form controls */
 
 /* Modal overlay — backdrop with blur (node canon) + flex centering */
-.modal-overlay {
+.modal-overlay,
+.auth-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(4, 9, 15, 0.85);
@@ -12,6 +13,11 @@
   justify-content: center;
   padding: 20px;
   animation: modalFadeIn 0.2s ease-out;
+}
+
+.auth-modal-overlay {
+  z-index: 9999;
+  background: rgba(4, 9, 15, 0.9);
 }
 
 /* Optional .active modifier (legacy node pattern with display:none default) */
@@ -26,7 +32,8 @@
  *   2) Node pattern: .modal-panel > .modal-header + .modal-body + .modal-footer (no panel padding).
  * Detection via :has() — when .modal-body is present, drop padding so body controls it.
  */
-.modal-panel {
+.modal-panel,
+.auth-modal-panel {
   width: 100%;
   max-width: 680px;
   max-height: 80vh;
@@ -41,6 +48,11 @@
     0 0 80px rgba(159, 18, 48, 0.1);
   padding: 24px;
   animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-modal-panel {
+  max-width: 900px;
+  padding: 0; 
 }
 
 /* Node pattern: when body/footer present, panel becomes a chrome-only container */
