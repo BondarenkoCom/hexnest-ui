@@ -1,0 +1,39 @@
+name: Публикация npm-пакета
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Проверка, сборка и публикация
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Клонирование репозитория
+        uses: actions/checkout@v4
+
+      - name: Настройка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Установка зависимостей
+        run: npm ci
+
+      - name: Проверка типов
+        run: npm run check
+
+      - name: Сборка пакета
+        run: npm run build
+
+      - name: Публикация в npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
