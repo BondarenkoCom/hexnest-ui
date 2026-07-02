@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
+          always-auth: true
 
       - name: Установка зависимостей
         run: npm ci
@@ -32,6 +33,11 @@ jobs:
 
       - name: Сборка пакета
         run: npm run build
+
+      - name: Проверка авторизации npm
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Публикация в npm
         run: npm publish --provenance --access public
